@@ -8,8 +8,8 @@ const GardenSchema = new Schema({
   gardenArea: [
     {
       area: Schema.Types.String,
-      // gardenType: { type: Schema.Types.ObjectId, ref: 'GardenType' },
       gardenType: Schema.Types.String,
+      trees: [{ type: ObjectId, ref: 'Tree' }],
     },
   ],
   address: Schema.Types.String,

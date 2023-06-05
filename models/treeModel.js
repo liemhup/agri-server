@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const TreeSchema = new Schema({
-  treeName: {
+  tenCay: {
     required: true,
     type: String,
   },
@@ -10,6 +10,15 @@ const TreeSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: 'Garden',
+    },
+  ],
+  giaiDoan: [
+    {
+      tenGiaiDoan: String,
+      tuoi: String,
+      mota: String,
+      benh: [{ tenbenh: String, cachChua: String, cachPhong: String }],
+      phanbon: String,
     },
   ],
 });

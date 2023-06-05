@@ -18,7 +18,8 @@ exports.getAllGarden = async (req, res, next) => {
   const gardens = await gardenModel
     .find({})
     .populate('farmer')
-    .populate('owner');
+    .populate('owner')
+    .populate('gardenArea.trees');
   res.send(JSON.stringify(gardens));
   res.end();
 };
