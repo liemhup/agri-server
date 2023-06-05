@@ -12,7 +12,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: ['http://localhost:5173', 'http://localhost:4000'],
-    methods: ['POST', 'PUT', 'GET', 'HEAD', 'OPTIONS'],
+    methods: ['POST', 'PUT', 'GET', 'HEAD', 'OPTIONS', 'DELETE'],
     credentials: true,
   })
 );
@@ -23,7 +23,10 @@ app.use(
     saveUninitialized: false,
     cookie: {
       sameSite: 'lax',
-      secure: true,
+      //dev
+      secure: false,
+      // prod
+      // secure: true,
       // httpOnly: false,
       maxAge: 1000 * 60 * 60 * 24,
     },

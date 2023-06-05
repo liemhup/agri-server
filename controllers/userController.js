@@ -82,6 +82,7 @@ exports.adminLogin = async (req, res, next) => {
     return;
   }
   req.session.user = matchUser;
+  console.log(req.session);
   res.status(200).send(JSON.stringify(matchUser));
   res.end();
 };
@@ -89,4 +90,25 @@ exports.adminLogin = async (req, res, next) => {
 exports.getAll = async (req, res, next) => {
   const users = await userModel.find({});
   res.send(JSON.stringify(users));
+};
+
+exports.getUserCookies = async (req, res, next) => {
+  if (!req.session.user) {
+    res.status(404).end();
+    return;
+  }
+  res.send(JSON.stringify(req.session.user));
+  res.end();
+};
+
+exports.getFarmer = async (req, res, next) => {
+  const farmers = await userModel.find({ userRole: 'farmer' });
+  res.send(JSON.stringify(farmers));
+  res.end();
+};
+
+exports.deleteUser = async (req, res, next) => {
+  const { id } = req.params;
+  await userModel.deleteOne({ _id: id });
+  res.end();
 };

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const GardenSchema = new Schema({
-  users: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  farmer: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   action: [{ type: Schema.Types.ObjectId, ref: 'Action' }],
   gardenArea: [
     {
@@ -13,7 +13,10 @@ const GardenSchema = new Schema({
     },
   ],
   address: Schema.Types.String,
-
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
   gardenName: Schema.Types.String,
 });
 
